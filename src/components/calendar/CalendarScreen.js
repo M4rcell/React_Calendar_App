@@ -9,6 +9,7 @@ import { CalendarEvent } from './CalendarEvent';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'moment/locale/es';
+import { CalendarModal } from './CalendarModal';
 moment.locale('es');
 
 const localizer = momentLocalizer(moment);
@@ -63,8 +64,7 @@ export const CalendarScreen = () => {
     };
 
     return (
-        <div>
-            <div className="calendar-screem">
+         <div className="calendar-screem">
              <Navbar/>
 
              <Calendar
@@ -83,7 +83,8 @@ export const CalendarScreen = () => {
                     event:CalendarEvent
                 }}
                 />
-                </div>
+
+                <CalendarModal/>
         </div>
-    )
+        )
 }
