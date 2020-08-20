@@ -6,10 +6,13 @@ import moment from 'moment'
 import { Navbar } from '../ui/Navbar'
 import { messages } from '../../helpers/calendar-messages-es';
 import { CalendarEvent } from './CalendarEvent';
+import { CalendarModal } from './CalendarModal';
+import { useDispatch } from 'react-redux';
+import { uiOpenModal } from '../../actions/ui';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'moment/locale/es';
-import { CalendarModal } from './CalendarModal';
+
 moment.locale('es');
 
 const localizer = momentLocalizer(moment);
@@ -30,9 +33,13 @@ export const CalendarScreen = () => {
 
     const [lastView, setlastView] = useState(localStorage.getItem('lastView : ')|| 'month');
     
+    
+     const dispatch = useDispatch();
+
     //give double click in the note
     const onDoubleClick =(e) =>{
-        console.log(e);
+        //console.log(e);
+        dispatch(uiOpenModal());
     }
 
     //give select in the note

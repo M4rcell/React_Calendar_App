@@ -11,4 +11,4 @@ export const store = createStore(
     composeEnhancers(
         applyMiddleware(thunk)//use dispath & getSate
    )
-)
+)   
