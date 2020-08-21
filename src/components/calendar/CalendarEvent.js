@@ -9,7 +9,7 @@ export const CalendarEvent = ({event}) => {
         <div>
             <strong> {title}</strong>
             <br/>
-            <span>{user.name}</span>
+            {/* <span>{user.name}</span> */}
         </div>
     )
 }

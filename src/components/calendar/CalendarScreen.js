@@ -7,7 +7,7 @@ import { Navbar } from '../ui/Navbar'
 import { messages } from '../../helpers/calendar-messages-es';
 import { CalendarEvent } from './CalendarEvent';
 import { CalendarModal } from './CalendarModal';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { uiOpenModal } from '../../actions/ui';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -18,10 +18,10 @@ import { AddNewFab } from '../ui/AddNewFab';
 moment.locale('es');
 
 const localizer = momentLocalizer(moment);
-const events = [{
+/* const _events = [{
     title:'Cumpleños del Jefe',
     start:moment().toDate(),
-    end: moment().add(2,'hours').toDate(),
+    end: moment().add(2,'hours').to Date(),
     bgcolor:'#fafafa',
     notes:'Comprar el Pastel',
     user:{
@@ -29,7 +29,7 @@ const events = [{
         name:'Fernando'
     }
     } 
-]
+] */
 
 export const CalendarScreen = () => {
 
@@ -38,17 +38,20 @@ export const CalendarScreen = () => {
     
      const dispatch = useDispatch();
 
+     const {events} = useSelector(state => state.calendar)
+
     //give double click in the note
     const onDoubleClick =(e) =>{
         //console.log(e);
         dispatch(uiOpenModal());
+        dispatch(uiOpenModal());
+
     }
 
     //give select in the note
     const onSelectEvent =(e) =>{
 
         dispatch(eventSetActive(e));
-        dispatch(uiOpenModal());
         
     } 
     
