@@ -12,8 +12,9 @@ import { uiOpenModal } from '../../actions/ui';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'moment/locale/es';
-import { eventSetActive } from '../../actions/eventsCalendar';
+import { eventSetActive, eventClearActiveEvent } from '../../actions/eventsCalendar';
 import { AddNewFab } from '../ui/AddNewFab';
+import { DeleteEventFab } from '../ui/DeleteEventFab';
 
 moment.locale('es');
 
@@ -38,7 +39,8 @@ export const CalendarScreen = () => {
     
      const dispatch = useDispatch();
 
-     const {events} = useSelector(state => state.calendar)
+     const {events,activeEvent} = useSelector(state => state.calendar)
+    
 
     //give double click in the note
     const onDoubleClick =(e) =>{
@@ -60,6 +62,11 @@ export const CalendarScreen = () => {
         setlastView(e);
         localStorage.setItem('lastView : ', e);
     } 
+
+    const onSelectSlot =(e)=>{
+       
+        dispatch(eventClearActiveEvent());
+    }
 
     const eneventStyleGetter =(event,start,end,isSelect)=>{
        
@@ -93,6 +100,8 @@ export const CalendarScreen = () => {
                 onDoubleClickEvent={onDoubleClick}
                 onSelectEvent={onSelectEvent}
                 onView={onViewChange}
+                onSelectSlot={onSelectSlot}
+                selectable={true}
                 view={lastView}
                 components={{
                     event:CalendarEvent
@@ -100,6 +109,13 @@ export const CalendarScreen = () => {
                 />
 
                 <AddNewFab/>
+                
+                {
+
+                 (activeEvent) && <DeleteEventFab/> 
+
+                }
+
 
                 <CalendarModal/>
         </div>
