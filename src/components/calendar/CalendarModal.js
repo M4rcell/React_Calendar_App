@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { uiCloseModal } from '../../actions/ui';
-import { eventAddNew, eventClearActiveEvent } from '../../actions/eventsCalendar';
+import { eventAddNew, eventClearActiveEvent, eventUpdated } from '../../actions/eventsCalendar';
 
 const customStyles = {
   content : {
@@ -114,19 +114,22 @@ export const CalendarModal = () => {
         
       }
 
+      if (activeEvent) {
+
+        dispatch(eventUpdated(formValues))
+        
+      } else {
       // TODO: realizar grabacion en db
       
-     // console.log('formValues : ',formValues);
-
-     dispatch(eventAddNew({
-       ...formValues,
-       id:new Date().getTime(),
-       name:{
-         _id:'1123',
-         name:'Marcel'
-       }
-     }));
-
+       dispatch(eventAddNew({
+          ...formValues,
+          id:new Date().getTime(),
+          name:{
+            _id:'1123',
+            name:'Marcel'
+          }
+        }));
+      }
       setTitleValid(true);
       closeModal();
 

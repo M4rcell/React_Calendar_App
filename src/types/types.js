@@ -7,5 +7,7 @@ export const  types = {
     //Calendario
     eventSetActive:'[event] set Active',
     eventAddNew:'[event] add new',
-    eventClearActiveEvent:'[event] active event '
+    eventClearActiveEvent:'[event] active event ',
+    eventUpdated:'[event] event update ',
+
 } 
