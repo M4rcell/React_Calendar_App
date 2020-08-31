@@ -23,8 +23,9 @@ const fetchSinToken =(endpoint,data,method='GET')=>{
    }
 }
 
-export {
 
-    fetchSinToken
+
+export {
+    fetchSinToken,
 
 }
