@@ -8,13 +8,19 @@ import {
   } from "react-router-dom";
 import { LoginScreen } from '../components/auth/LoginScreen';
 import { CalendarScreen } from '../components/calendar/CalendarScreen';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { startChecking } from '../actions/auth';
+import { PublicRoute } from './PublicRoute';
+import { PrivateRoute } from './PrivateRoute';
   
 
 export const AppRouter = () => {
 
     const dispatch = useDispatch();
+
+    const {checking,uid} = useSelector(state => state.auth);
+    
+    console.log(checking);
 
     useEffect(() => {
         
@@ -22,20 +28,35 @@ export const AppRouter = () => {
 
     }, [dispatch])
 
+    if (checking) {
+        
+        return (<h5> Espere ...... </h5>)
+    }
+
     return (
             
-            <Router>
-                <div>
-                   <Switch>
-                        {/*    component={LoginScreen} */}
-                        <Route exact path="/login" component={LoginScreen}/>
-                            
-                        <Route path="/calendar" component={CalendarScreen}/>
-                            
-                        <Redirect to="/"/>
-                  
-                    </Switch>
-                </div>
-            </Router>
+        <Router>
+            <div>
+               <Switch>
+                    {/*    component={LoginScreen} */}
+                    <PublicRoute 
+                         exact 
+                         path="/login" 
+                         component={LoginScreen}
+                         isAuthenticated={!!uid} //!String = false  !!string=true __ !!null=false
+                    />
+                        
+                    <PrivateRoute 
+                        path="/" 
+                        component={CalendarScreen}
+                        isAuthenticated={!!uid} //!String = false  !!string=true __ !!null=false
+
+                    />
+                        
+                    <Redirect to="/"/>
+              
+                </Switch>
+            </div>
+        </Router>
     )
 }
