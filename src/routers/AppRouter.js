@@ -18,7 +18,7 @@ export const AppRouter = () => {
 
     const dispatch = useDispatch();
 
-    const {checking,uid} = useSelector(state => state.auth);
+    const {checking,uid} = useSelector(state => state.auth);//uid esta contante de los cambios
     
     console.log(checking);
 
