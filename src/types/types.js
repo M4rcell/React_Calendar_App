@@ -12,7 +12,6 @@ export const  types = {
     eventDelete:'[event] event delete',
 
     //autentification
-    authChecking:'[auth] checking login state',
     authCheckingFinish:'[auth] Finish checking login state',
     authStartLogin:'[auth] Start login',
     authLogin:'[auth] login',
