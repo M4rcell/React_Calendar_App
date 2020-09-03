@@ -9,7 +9,7 @@ export const eventStartAddNew =(event)=>{
         try {
         const resp = await fetchConToken('events',event,'POST');
         const body = await resp.json();
-        console.log(body);
+        //console.log(body);
           
           if (body.ok) {
 
@@ -18,7 +18,7 @@ export const eventStartAddNew =(event)=>{
                   _id:uid,
                   name:name
               } 
-            console.log(event);
+            //console.log(event);
             dispatch(eventAddNew(event));
 
           }
@@ -55,3 +55,27 @@ export const eventUpdated =(event) =>({
 }); 
 
 export const eventDelete = () =>({type:types.eventDelete});
+
+export const eventStartLoading=()=>{
+    return async(dispatch)=> {
+      
+        try {
+
+            const resp =  await fetchConToken('events');
+            const body = await resp.json(); //traer desde db 
+            //console.log(body);
+            const events = body.eventos;
+            console.log(events);
+
+            //dispatch(eventLoaded(events))
+            
+        } catch (error) {
+            
+        }
+    }
+}
+
+const eventLoaded=(events)=>({
+    type:types.eventLoaded,
+    payload:events
+})

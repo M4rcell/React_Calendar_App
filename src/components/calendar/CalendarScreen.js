@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment'
 
@@ -12,7 +12,7 @@ import { uiOpenModal } from '../../actions/ui';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'moment/locale/es';
-import { eventSetActive, eventClearActiveEvent } from '../../actions/eventsCalendar';
+import { eventSetActive, eventClearActiveEvent, eventStartLoading } from '../../actions/eventsCalendar';
 import { AddNewFab } from '../ui/AddNewFab';
 import { DeleteEventFab } from '../ui/DeleteEventFab';
 
@@ -41,6 +41,11 @@ export const CalendarScreen = () => {
 
      const {events,activeEvent} = useSelector(state => state.calendar)
     
+     useEffect(() => {
+         
+        dispatch(eventStartLoading());
+
+     }, [dispatch])
 
     //give double click in the note
     const onDoubleClick =(e) =>{

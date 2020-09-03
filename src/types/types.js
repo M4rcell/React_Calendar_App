@@ -13,6 +13,7 @@ export const  types = {
 
     //CRUD calendar
     eventStartAddNew: '[event] Start add new',
+    eventLoaded: '[event] Events loaded',
 
     //autentification
     authCheckingFinish:'[auth] Finish checking login state',
