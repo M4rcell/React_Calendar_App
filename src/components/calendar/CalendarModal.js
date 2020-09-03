@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { uiCloseModal } from '../../actions/ui';
-import { eventAddNew, eventClearActiveEvent, eventUpdated } from '../../actions/eventsCalendar';
+import { eventClearActiveEvent, eventUpdated, eventStartAddNew } from '../../actions/eventsCalendar';
 
 const customStyles = {
   content : {
@@ -99,41 +99,38 @@ export const CalendarModal = () => {
     }
 
     const handleSubmitForm = (e) =>{
-      e.preventDefault();
-      /* console.log(formValues);
-      console.log('Titulo : ',formValues.title); */
 
-      const momentStart = moment(start);
-      const momentEnd = moment(end);
+          e.preventDefault();
+          /* console.log(formValues);
+          console.log('Titulo : ',formValues.title); */
 
-      if (momentStart.isSameOrAfter(momentEnd)) {//si la fecha es ingual o esta despues de fecha final error
-        return Swal.fire('Error','fecha final debe de ser mayor','error');
-        
-      }
+          const momentStart = moment(start);
+          const momentEnd = moment(end);
 
-      if (title.trim().length < 2) {
-        return setTitleValid(false)
-        
-      }
-
-      if (activeEvent) {
-
-        dispatch(eventUpdated(formValues))
-        
-      } else {
-      // TODO: realizar grabacion en db
-      
-       dispatch(eventAddNew({
-          ...formValues,
-          id:new Date().getTime(),
-          name:{
-            _id:'1123',
-            name:'Marcel'
+          if (momentStart.isSameOrAfter(momentEnd)) {//si la fecha es ingual o esta despues de fecha final error
+            return Swal.fire('Error','fecha final debe de ser mayor','error');
+            
           }
-        }));
-      }
-      setTitleValid(true);
-      closeModal();
+
+          if (title.trim().length < 2) {
+            
+            return setTitleValid(false)
+            
+          }
+
+          if (activeEvent) {
+
+            dispatch(eventUpdated(formValues))
+            
+          } else {
+          // TODO: realizar grabacion en db
+          
+          dispatch(eventStartAddNew(
+              formValues              
+            ));
+          }
+          setTitleValid(true);
+          closeModal();
 
     }
 

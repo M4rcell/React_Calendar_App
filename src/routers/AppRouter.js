@@ -20,7 +20,7 @@ export const AppRouter = () => {
 
     const {checking,uid} = useSelector(state => state.auth);//uid esta contante de los cambios
     
-    console.log(checking);
+    //console.log(checking);
 
     useEffect(() => {
         

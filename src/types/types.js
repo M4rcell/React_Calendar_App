@@ -11,6 +11,9 @@ export const  types = {
     eventUpdated:'[event] event update ',
     eventDelete:'[event] event delete',
 
+    //CRUD calendar
+    eventStartAddNew: '[event] Start add new',
+
     //autentification
     authCheckingFinish:'[auth] Finish checking login state',
     authStartLogin:'[auth] Start login',
