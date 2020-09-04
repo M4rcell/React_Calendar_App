@@ -132,6 +132,6 @@ const eventLoaded=(events)=>({
     payload:events
 })
 
-export const eventClearStoreEvent=()=>{
-    types:types.eventClearStoreEvent
-}
+export const eventClearStoreEvent=()=>({
+    type:types.eventClearStoreEvent
+})

@@ -8,7 +8,7 @@ export const  types = {
     eventSetActive:'[event] set Active',
     eventAddNew:'[event] add new',
     eventClearActiveEvent:'[event] active event ',
-    eventClearStoreEvent:'[event] clear stora events'
+    eventClearStoreEvent:'[event] clear stora events',
     //CRUD calendar
     eventStartAddNew: '[event] Start add new',
     eventLoaded: '[event] Events loaded',
