@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { eventDelete } from '../../actions/eventsCalendar';
+import { eventStartDelete } from '../../actions/eventsCalendar';
 
 export const DeleteEventFab = () => {
 
@@ -8,7 +8,7 @@ export const DeleteEventFab = () => {
 
     const handleDelete = () =>{
         
-        dispatch(eventDelete());
+        dispatch(eventStartDelete());
         
     }
 
