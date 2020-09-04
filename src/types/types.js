@@ -8,13 +8,13 @@ export const  types = {
     eventSetActive:'[event] set Active',
     eventAddNew:'[event] add new',
     eventClearActiveEvent:'[event] active event ',
-    eventUpdated:'[event] event update ',
     eventDelete:'[event] event delete',
-
+    
     //CRUD calendar
     eventStartAddNew: '[event] Start add new',
     eventLoaded: '[event] Events loaded',
-
+    eventUpdated:'[event] event update ',
+    
     //autentification
     authCheckingFinish:'[auth] Finish checking login state',
     authStartLogin:'[auth] Start login',
