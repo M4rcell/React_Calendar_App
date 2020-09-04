@@ -62,7 +62,7 @@ export const calendarReducer = ( state=initialState,action) =>{
             }
         case types.eventClearStoreEvent:
             return{
-                events:[]
+                ...initialState
             }
         default:
             return state;
