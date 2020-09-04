@@ -24,10 +24,10 @@ const now = moment().minutes(0).seconds(0).add(1,'hours');
 const nowPlus1 = now.clone().add(1,'hours');
 
 const initEvent = {
-    title:'',
-    start:moment().toDate(),
-    end: nowPlus1.toDate(),
-    notes:'',
+  title: '',
+  notes: '',
+  start: now.toDate(),
+  end: nowPlus1.toDate()
 
 }
 
@@ -43,12 +43,7 @@ export const CalendarModal = () => {
   const dispatch = useDispatch();
 
 
-   const [formValues, setformValues] = useState({
-     title:'Evento',
-     notes:'',
-     start:now.toDate(),
-     end: nowPlus1.toDate()
-   })
+   const [formValues, setformValues] = useState(initEvent);
 
    const {notes, title,start,end} = formValues;
 

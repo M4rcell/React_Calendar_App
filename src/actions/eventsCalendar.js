@@ -1,5 +1,6 @@
 import { types } from "../types/types";
 import { fetchConToken } from "../helpers/fetch";
+import { prepareEvents } from "../helpers/prepareEvents";
 
 export const eventStartAddNew =(event)=>{
     return async(dispatch,getState) =>{
@@ -32,7 +33,7 @@ export const eventStartAddNew =(event)=>{
 }
 
 
-export const eventAddNew = (event) =>({
+const eventAddNew = (event) =>({
    
     type:types.eventAddNew,
     payload:event,
@@ -61,16 +62,17 @@ export const eventStartLoading=()=>{
       
         try {
 
-            const resp =  await fetchConToken('events');
+            const resp =  await fetchConToken('events');//peticion DB
             const body = await resp.json(); //traer desde db 
             //console.log(body);
-            const events = body.eventos;
-            console.log(events);
+            const events = prepareEvents(body.eventos); //convertir los formato string a formato Date
+            //console.log(events);
 
-            //dispatch(eventLoaded(events))
+            dispatch(eventLoaded(events))
             
         } catch (error) {
             
+            console.log(error);
         }
     }
 }
